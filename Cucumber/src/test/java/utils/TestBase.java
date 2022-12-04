@@ -22,8 +22,12 @@ public class TestBase {
 		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+ "//src//test//Resources//config.properties");
 		prop = new Properties();
 		prop.load(fis);
-		String browser = prop.getProperty("Browser");
 		String url = prop.getProperty("URL");
+		String browser_properties = prop.getProperty("Browser");
+		String browser_maven=System.getProperty("browser");
+		// result = testCondition ? value1 : value2
+		
+		String browser = browser_maven!=null ? browser_maven : browser_properties;
 		if(driver==null)
 		{
 			if(browser.equalsIgnoreCase("Chrome"))
